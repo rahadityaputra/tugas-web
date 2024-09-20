@@ -32,11 +32,22 @@
 
       <!-- alert jika tabel masih kosong -->
       <div class="peringatan-data-kosong">
-        <span class='alert alert-danger d-block my-2'>Data Masih Kosong</span>
+        <span class="alert alert-danger d-block my-2">Data Masih Kosong</span>
       </div>
 
-    
-      <form>
+      <button
+        type="button"
+        class="btn btn-success"
+        data-action="tambah"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+      >
+      <i class="bi bi-plus-square"></i>
+        Tambah Data
+      </button>
+
+      <!-- tidak jadi  -->
+      <!-- <form>
         <h2 class="text-center">Input Barang</h2>
         <label for="nama-produk" class="form-label fw-bold">Nama</label>
         <input
@@ -55,7 +66,61 @@
         />
         <div class="peringatan-harga-produk"></div>
         <button type="button" class="tambah btn btn-primary mt-5">Tambah</button>
-      </form>
+      </form> -->
+    </div>
+
+    <!-- form modal untuk tambah dan edit data -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Input Data Barang</h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form></form>
+              <label for="nama-produk" class="form-label fw-bold">Nama</label>
+              <input
+                type="text"
+                name="nama-produk"
+                id="nama-produk"
+                class="input-nama-produk form-control"
+              />
+              <div class="peringatan-nama-produk"></div>
+              <label for="harga-produk" class="form-label fw-bold">Harga</label>
+              <input
+                type="text"
+                name="harga-produk"
+                id="harga-produk"
+                class="input-harga-produk form-control"
+              />
+              <div class="peringatan-harga-produk"></div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="tombol btn btn-primary"  data-bs-dismiss="modal"></button>
+            <!-- <button type="button" class="btn btn-primary">Send message</button> -->
+          </div>
+        </div>
+      </div>
     </div>
 
     <script
