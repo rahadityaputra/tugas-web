@@ -22,8 +22,7 @@ const muculkanPeringatanDataKosong = () => {
 
 export const renderData = () => {
   muculkanPeringatanDataKosong();
-  let html = products
-      .map(({ nama, harga }, index) => {
+  let html = $.map(products, ({ nama, harga }, index) => {
         return `
           <tr>
             <td scope="col">${index + 1}</td>

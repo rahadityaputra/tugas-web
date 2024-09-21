@@ -1,17 +1,9 @@
 export const cekKarakter = (value) => {
-    if (value.length < 6) {
-      return false;
-    } else {
-      return true;
-    }
+    return value.length >= 6
   }
   
 export const cekAngka = (value) => {
-    if (Number(value)) {
-      return true;
-    } else {
-      return false;
-    }
+  return $.isNumeric(value);
 }
   
 

@@ -8,13 +8,14 @@ const alertInputNamaProduk = $(".peringatan-nama-produk");
 const alertInputHargaProduk = $(".peringatan-harga-produk");
 
 export const handlerKlikTombol = (event) => {
-  const element = event.target;
-  if (element.matches(".hapus")) {
-    const indexYangAkanDihapus = element.dataset.index;
+  const element = $(event.target);
+  if (element.is(".hapus")) {
+    const indexYangAkanDihapus = element.attr("data-index");
     handlerHapusData(indexYangAkanDihapus);
-  } else if (element.matches(".tombol")) {
-    const action = element.getAttribute("data-action");
-    const index = element.getAttribute("data-index");
+  } else if (element.is(".tombol")) {
+    console.log('halo');
+    const action = element.attr("data-action");
+    const index = element.attr("data-index");
     switch (action) {
       case "tambah":
         handlerTambahData();
@@ -64,35 +65,33 @@ export const handlerHapusData = (index) => {
   renderData();
 };
 
-export const handlerModalMuncul = (event) => {
+export const handlerModalMuncul = function (event) {
   kosongkanInput();
   // Button that triggered the modal
-  const button = event.relatedTarget;
+  const tombolModal = $(event.relatedTarget);
   // Extract info from data-bs-* attributes
-  const action = button.getAttribute("data-action");
-  const nama = button.getAttribute("data-nama");
-  const harga = button.getAttribute("data-harga");
-  const index = button.getAttribute("data-index");
+  const action = tombolModal.attr("data-action");
+  const nama = tombolModal.attr("data-nama");
+  const harga = tombolModal.attr("data-harga");
+  const index = tombolModal.attr("data-index");
   // If necessary, you could initiate an Ajax request here
   // and then do the updating in a callback.
 
   // Update the modal's content.
-  const modalTitle = exampleModal.querySelector(".modal-title");
-  const tombol = exampleModal.querySelector(".tombol");
-  tombol.setAttribute("data-action", action);
+  const modalTitle = $(this).find(".modal-title");
+  const tombol = $(this).find(".tombol");
+  tombol.attr("data-action", action);
   switch (action) {
     case "tambah":
-      modalTitle.textContent = `Tambah Data Barang`;
-      tombol.textContent = "Tambah";
+      modalTitle.text('Tambah Data Barang');
+      tombol.text("Tambah");
       break;
     case "edit":
-      modalTitle.textContent = `Edit Data Barang`;
-      tombol.textContent = "Edit";
+      modalTitle.text(`Edit Data Barang`);
+      tombol.text("Edit");
       inputNamaProduk.val(nama);
       inputHargaProduk.val(harga);
-      tombol.setAttribute("data-index", index);
-      // editData(index, )
-      // modalBodyInput.value = action;
+      tombol.attr("data-index", index);   
       break;
 
     default:
@@ -100,14 +99,9 @@ export const handlerModalMuncul = (event) => {
   }
 };
 
-export const handlerModalHilang = () => {};
-
 export const handlerEditData = (indexEdit) => {
-  console.log(indexEdit);
-  
   const namaEdit = inputNamaProduk.val();
   const hargaEdit = inputHargaProduk.val();
-  console.log(namaEdit, hargaEdit);
   editData(indexEdit, namaEdit, hargaEdit);
   renderData();
 };
