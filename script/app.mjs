@@ -1,18 +1,26 @@
 import {
   handlerInputHarga,
   handlerInputNama,
-  handlerModalMuncul,
-  handlerKlikTombol,
+  handleModalShow,
+  handleSubmitBtn,
+  handleRemoveItem,
 } from "./handler.mjs";
+import { toggleAlertIfEmpty } from "./render.mjs";
 
-const inputNamaProduk = $(".input-nama-produk");
-const inputHargaProduk = $(".input-harga-produk");
-const exampleModal = $("#exampleModal");
+const inputItemName = $(".input-item-name");
+const inputItemPrice = $(".input-item-price");
+const submitBtn = $(".submit-btn");
+const modalForm = $("#modal-form");
+// const removeBtn = $(".remove-btn");
+const tBody = $(".table tbody");
+
 
 
 $(function () {
-  inputNamaProduk.on("input", handlerInputNama);
-  inputHargaProduk.on("input", handlerInputHarga);
-  $(document).on("click", handlerKlikTombol);
-  exampleModal.on('show.bs.modal', handlerModalMuncul);
+  toggleAlertIfEmpty();
+  inputItemName.on("input", handlerInputNama);
+  inputItemPrice.on("input", handlerInputHarga);
+  modalForm.on('show.bs.modal', handleModalShow);
+  submitBtn.on('click', handleSubmitBtn);
+  tBody.on('click','.remove-btn', handleRemoveItem);
 });

@@ -1,8 +1,8 @@
-export const cekKarakter = (value) => {
+export const isNameAtLeastSix = (value) => {
     return value.length >= 6
   }
   
-export const cekAngka = (value) => {
+export const isNumber = (value) => {
   return $.isNumeric(value);
 }
   

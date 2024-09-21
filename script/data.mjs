@@ -1,29 +1,18 @@
-export let products = [];
+export let items = [];
 
-export const tambahData = (nama, harga) => {
-  products.push({ nama, harga });
+export const addItemData = (name, price) => {
+  items.push({ name, price });
 };
 
-export const hapusData = (indexData) => {
-  products.splice(indexData, 1);
+export const removeItemData = (dataIndex) => {
+  items.splice(dataIndex, 1);
 };
 
-// export const editData = (indexEdit, namaEdit, hargaEdit) => {
-//   products = products.map(({ nama, harga }, index) => {
-//     if (indexEdit == index) {
-//       console.log("sama");
-//       return { nama : namaEdit, harga : hargaEdit };
-//     }
-//     return { nama, harga };
-//   });
-//     // console.log(products);
-// };
-
-export const editData = (indexEdit, namaEdit, hargaEdit) => {
-  products = $.map(products, ({ nama, harga }, index) => {
-    if (indexEdit == index) {
-      return { nama : namaEdit, harga : hargaEdit };
+export const editItemData = (dataIndex, newName, newPrice) => {
+  items = $.map(items, ({ name, price }, index) => {
+    if (dataIndex == index) {
+      return { name : newName, price : newPrice };
     }
-    return { nama, harga };
+    return { name, price };
   });    
   };
